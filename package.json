@@ -1,0 +1,40 @@
+{
+  "name": "hermes-ws",
+  "version": "0.2.0",
+  "description": "A minimal RFC 6455 WebSocket server and Vite plugin for Node.js.",
+  "license": "MIT",
+  "keywords": [
+    "websocket",
+    "rfc6455",
+    "vite",
+    "plugin",
+    "realtime",
+    "server",
+    "node"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "import": "./dist/client.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "bun run build && bun test && bun run typecheck"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  }
+}
