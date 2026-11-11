@@ -30,7 +30,7 @@ wss.on("connection", (ws: MinimalWebSocket) => {
   wss.broadcast(event("system", `A client joined (${wss.clients.size} online).`), ws);
 
   ws.on("message", (message: string | Buffer, isBinary: boolean) => {
-    if (isBinary) {
+    if (isBinary || typeof message !== "string") {
       ws.send(message);
       return;
     }
