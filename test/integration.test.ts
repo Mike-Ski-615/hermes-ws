@@ -68,7 +68,8 @@ describe("integration", () => {
       let buffer = Buffer.alloc(0);
 
       socket.on("data", (data) => {
-        buffer = Buffer.concat([buffer, data]);
+        const chunk = typeof data === "string" ? Buffer.from(data) : data;
+        buffer = Buffer.concat([buffer, chunk]);
 
         const marker = buffer.indexOf("\r\n\r\n");
 
@@ -111,7 +112,8 @@ describe("integration", () => {
       [];
 
     socket.on("data", (data) => {
-      buffer = Buffer.concat([buffer, data]);
+      const chunk = typeof data === "string" ? Buffer.from(data) : data;
+      buffer = Buffer.concat([buffer, chunk]);
 
       if (!upgraded) {
         const marker = buffer.indexOf("\r\n\r\n");
