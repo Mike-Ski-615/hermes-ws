@@ -31,7 +31,12 @@
     "build": "tsc -p tsconfig.build.json",
     "test": "bun test",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "bun run build && bun test && bun run typecheck"
+    "demo": "bun examples/echo-server.ts",
+    "prepublishOnly": "bun run typecheck && bun test && bun run build"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.0",
+    "typescript": "^5.9.3"
   },
   "type": "module",
   "engines": {
